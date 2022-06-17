@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SnakeOOP
 {
@@ -6,11 +7,16 @@ namespace SnakeOOP
     {
         static void Main(string[] args)
         {
-            Point point1 = new Point(1, 3, '*');
-            point1.Draw();
+            List<Point> list = new List<Point>()
+            {
+                new Point(1, 3, '*'),
+                new Point(2, 5, '#')
+            };
 
-            Point point2 = new Point(2, 5, '#');
-            point2.Draw();
+            foreach(Point p in list)
+            {
+                p.Draw();
+            }
 
             Console.ReadLine();
         }
