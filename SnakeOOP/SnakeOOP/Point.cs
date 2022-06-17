@@ -32,6 +32,12 @@ namespace SnakeOOP
             }
         }
 
+        internal void Clear()
+        {
+            Sym = ' ';
+            Draw();
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(X, Y);

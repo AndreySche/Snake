@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace SnakeOOP
 {
@@ -11,14 +12,14 @@ namespace SnakeOOP
             //Console.SetBufferSize(sizeX, sizeY);
             SetBorder(sizeX, sizeY);
 
-            /*List<Point> list = new List<Point>()
-            {
-                new Point(1, 3, '*'),
-                new Point(2, 5, '#')
-            };
-            foreach (Point p in list) p.Draw();*/
             Point p = new Point(5, 5, '*');
             Snake snake = new Snake(p, 5, Direct.right);
+
+            for (int i = 0; i < 10; i++)
+            {
+                snake.Move();
+                Thread.Sleep(100);
+            }
 
             Console.ReadLine();
         }
