@@ -11,14 +11,14 @@ namespace SnakeOOP
             //Console.SetBufferSize(sizeX, sizeY);
             SetBorder(sizeX, sizeY);
 
-            List<Point> list = new List<Point>()
+            /*List<Point> list = new List<Point>()
             {
                 new Point(1, 3, '*'),
                 new Point(2, 5, '#')
             };
-
-            foreach (Point p in list) p.Draw();
-
+            foreach (Point p in list) p.Draw();*/
+            Point p = new Point(1, 3, '*');
+            Snake snake = new Snake(p, 3, Direct.right);
 
             Console.ReadLine();
         }
