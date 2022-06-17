@@ -11,25 +11,16 @@ namespace SnakeOOP
         static void Main(string[] args)
         {
             InitVariables();
-
             Console.ReadLine();
         }
 
         private static void InitVariables()
         {
-            int x1 = 1, y1 = 3;
-            char sim1 = '*';
-            Draw(x1, y1, sim1);
+            Point point1 = new Point() { x = 1, y = 3, sym = '*' };
+            point1.Draw();
 
-            x1 = 2; y1 = 4;
-            char sim2 = '#';
-            Draw(x1, y1, sim2);
-        }
-
-        private static void Draw(int x, int y, char sym)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(sym);
+            Point point2 = new Point() { x = 2, y = 5, sym = '#' };
+            point2.Draw();
         }
     }
 }
