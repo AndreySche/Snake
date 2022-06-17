@@ -16,10 +16,10 @@ namespace SnakeOOP
 
         private static void InitVariables()
         {
-            Point point1 = new Point() { x = 1, y = 3, sym = '*' };
+            Point point1 = new Point(1, 3, '*');
             point1.Draw();
 
-            Point point2 = new Point() { x = 2, y = 5, sym = '#' };
+            Point point2 = new Point(2, 5, '#');
             point2.Draw();
         }
     }
