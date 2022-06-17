@@ -8,20 +8,21 @@ namespace SnakeOOP
 {
     class Point
     {
-        public int x, y;
-        public char sym;
+        public int X, Y;
+        public char Sym;
+        public Point() { }
 
         public Point(int x, int y, char sym)
         {
-            this.x = x;
-            this.y = y;
-            this.sym = sym;
-        }   
+            X = x;
+            Y = y;
+            Sym = sym;
+        }
 
         public void Draw()
         {
-            Console.SetCursorPosition(x, y);
-            Console.Write(sym);
+            Console.SetCursorPosition(X, Y);
+            Console.Write(Sym);
         }
     }
 }
