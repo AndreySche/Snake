@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SnakeOOP
 {
@@ -11,7 +7,7 @@ namespace SnakeOOP
         public VerticalLine(int x, int y, char sym, int count)
         {
             list = new List<Point>();
-            Foreach(x, y, sym, count, false, list);
+            Foreach(x, y, sym, count, false,ref list);
             Draw();
         }
     }

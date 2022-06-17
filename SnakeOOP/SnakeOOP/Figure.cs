@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SnakeOOP
 {
@@ -15,7 +11,7 @@ namespace SnakeOOP
             foreach (Point p in list) p.Draw();
         }
 
-        public List<Point> Foreach(int _x, int _y, char _sym, int count, bool horizontal, List<Point> list)
+        public List<Point> Foreach(int _x, int _y, char _sym, int count, bool horizontal,ref List<Point> list)
         {
             int plus1, plus2;            
             for (int i = 0; i < count; i++)
