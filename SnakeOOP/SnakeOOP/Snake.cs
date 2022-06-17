@@ -1,6 +1,7 @@
 ﻿
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace SnakeOOP
 {
@@ -37,6 +38,18 @@ namespace SnakeOOP
             Point nextPoint = new Point(head);
             nextPoint.Move(1, _direction);
             return nextPoint;
+        }
+
+        public void JoyStick(ConsoleKey key)
+        {
+            if (key == ConsoleKey.LeftArrow)
+                _direction = Direct.left;
+            if (key == ConsoleKey.RightArrow)
+                _direction = Direct.right;
+            if (key == ConsoleKey.UpArrow)
+                _direction = Direct.up;
+            if (key == ConsoleKey.DownArrow)
+                _direction = Direct.down;
         }
     }
 }

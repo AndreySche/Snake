@@ -15,10 +15,15 @@ namespace SnakeOOP
             Point p = new Point(5, 5, '*');
             Snake snake = new Snake(p, 5, Direct.right);
 
-            for (int i = 0; i < 10; i++)
+            while (true)
             {
-                snake.Move();
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.JoyStick(key.Key);
+                }
                 Thread.Sleep(100);
+                snake.Move();
             }
 
             Console.ReadLine();

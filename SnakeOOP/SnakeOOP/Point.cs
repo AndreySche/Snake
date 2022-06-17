@@ -27,8 +27,8 @@ namespace SnakeOOP
             {
                 case Direct.right: X += offset; break;
                 case Direct.left: X -= offset; break;
-                case Direct.up: Y += offset; break;
-                case Direct.down: Y -= offset; break;
+                case Direct.up: Y -= offset; break;
+                case Direct.down: Y += offset; break;
             }
         }
 
