@@ -6,8 +6,12 @@ namespace SnakeOOP
     {
         public HorizontalLine(int x, int y, char sym, int count)
         {
-            list = new List<Point>(); 
-            Foreach(x, y, sym, count, true,ref list);
+            list = new List<Point>();
+            for (int i = 0; i < count; i++)
+            {
+                list.Add(new Point(x + i, y, sym));
+            }
+
             Draw();
         }
     }

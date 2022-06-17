@@ -7,7 +7,11 @@ namespace SnakeOOP
         public VerticalLine(int x, int y, char sym, int count)
         {
             list = new List<Point>();
-            Foreach(x, y, sym, count, false,ref list);
+            for (int i = 0; i < count; i++)
+            {
+                list.Add(new Point(x, y + i, sym));
+            }
+
             Draw();
         }
     }
