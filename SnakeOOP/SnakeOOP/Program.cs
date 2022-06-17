@@ -13,10 +13,7 @@ namespace SnakeOOP
                 new Point(2, 5, '#')
             };
 
-            foreach(Point p in list)
-            {
-                p.Draw();
-            }
+            foreach (Point p in list) p.Draw();
 
             Console.ReadLine();
         }
