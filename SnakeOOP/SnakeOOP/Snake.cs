@@ -23,6 +23,12 @@ namespace SnakeOOP
 
         public void Move()
         {
+            if (Console.KeyAvailable)
+            {
+                ConsoleKeyInfo key = Console.ReadKey();
+                JoyStick(key.Key);
+            }
+
             Point tail = list.First();
             list.Remove(tail);
             Point head = GetNextPoint();
@@ -30,6 +36,18 @@ namespace SnakeOOP
 
             tail.Clear();
             head.Draw();
+        }
+
+        public bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.Sym = head.Sym;
+                list.Add(food);
+                return true;
+            }
+            return false;
         }
 
         public Point GetNextPoint()

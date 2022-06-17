@@ -44,6 +44,8 @@ namespace SnakeOOP
             Console.Write(Sym);
         }
 
+        public bool IsHit(Point p) => p.X == X && p.Y == Y;
+
         public override string ToString()
         {
             return $"{X}, {Y}, {Sym}"; 

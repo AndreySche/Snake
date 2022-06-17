@@ -15,15 +15,20 @@ namespace SnakeOOP
             Point p = new Point(5, 5, '*');
             Snake snake = new Snake(p, 5, Direct.right);
 
+            FoodCreator foodCreator = new FoodCreator(sizeX, sizeY, '$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+
             while (true)
             {
-                if (Console.KeyAvailable)
+                if (snake.Eat(food))
                 {
-                    ConsoleKeyInfo key = Console.ReadKey();
-                    snake.JoyStick(key.Key);
+                    food = foodCreator.CreateFood();
+                    food.Draw();
                 }
-                Thread.Sleep(100);
+                else Thread.Sleep(100);
                 snake.Move();
+
             }
 
             Console.ReadLine();
