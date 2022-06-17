@@ -6,24 +6,13 @@ using System.Threading.Tasks;
 
 namespace SnakeOOP
 {
-    class VerticalLine
+    class VerticalLine : Figure
     {
-        private List<Point> list;
-
         public VerticalLine(int x, int y, char sym, int count)
         {
             list = new List<Point>();
-            for (int i = 0; i < count; i++)
-            {
-                list.Add(new Point(x , y + i, sym));
-            }
-
+            Foreach(x, y, sym, count, false, list);
             Draw();
-        }
-
-        public void Draw()
-        {
-            foreach (Point p in list) p.Draw();
         }
     }
 }

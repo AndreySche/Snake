@@ -7,6 +7,10 @@ namespace SnakeOOP
     {
         static void Main(string[] args)
         {
+            int sizeX = 80, sizeY = 25;
+            //Console.SetBufferSize(sizeX, sizeY);
+            SetBorder(sizeX, sizeY);
+
             List<Point> list = new List<Point>()
             {
                 new Point(1, 3, '*'),
@@ -15,13 +19,17 @@ namespace SnakeOOP
 
             foreach (Point p in list) p.Draw();
 
-            HorizontalLine hLine = new HorizontalLine(4, 3, '+', 5);
-            VerticalLine vline = new VerticalLine(4, 3, '+', 7);
-            VerticalLine vline2 = new VerticalLine(4 + 5 - 1, 3, '+', 7);
-            HorizontalLine hLine2 = new HorizontalLine(4, 3 + 7 - 1, '+', 5);
-
 
             Console.ReadLine();
+        }
+
+        private static void SetBorder(int sizeX, int sizeY)
+        {
+            HorizontalLine hLine = new HorizontalLine(0, 0, '+', sizeX);
+            VerticalLine vline = new VerticalLine(0, 0, '+', sizeY);
+
+            HorizontalLine hLine2 = new HorizontalLine(0, sizeY - 1, '+', sizeX);
+            VerticalLine vline2 = new VerticalLine(sizeX - 1, 0, '+', sizeY);
         }
     }
 }

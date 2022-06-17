@@ -6,24 +6,13 @@ using System.Threading.Tasks;
 
 namespace SnakeOOP
 {
-    class HorizontalLine
+    class HorizontalLine : Figure
     {
-        private List<Point> list;
-
         public HorizontalLine(int x, int y, char sym, int count)
         {
-            list = new List<Point>();
-            for (int i = 0; i < count; i++)
-            {
-                list.Add(new Point(x + i, y, sym));
-            }
-
+            list = new List<Point>(); 
+            Foreach(x, y, sym, count, true, list);
             Draw();
-        }
-
-        public void Draw()
-        {
-            foreach (Point p in list) p.Draw();
         }
     }
 }
