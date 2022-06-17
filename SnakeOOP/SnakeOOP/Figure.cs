@@ -6,7 +6,7 @@ namespace SnakeOOP
     {
         protected List<Point> list;
 
-        public void Draw()
+        public virtual void Draw() // virtual -- чтобы можно было переопределить
         {
             foreach (Point p in list) p.Draw();
         }

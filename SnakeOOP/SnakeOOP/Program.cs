@@ -8,12 +8,19 @@ namespace SnakeOOP
     {
         static void Main(string[] args)
         {
-            int sizeX = 80, sizeY = 25;
-            //Console.SetBufferSize(sizeX, sizeY);
-            SetBorder(sizeX, sizeY);
+            int sizeX = 80, sizeY = 30;
 
-            Point p = new Point(5, 5, '*');
-            Snake snake = new Snake(p, 5, Direct.right);
+            HorizontalLine h1 = new HorizontalLine(0, 0, '=', sizeX);
+            VerticalLine v1 = new VerticalLine(0, 1, '|', sizeY - 2);
+            HorizontalLine h2 = new HorizontalLine(0, sizeY - 1, '=', sizeX);
+            VerticalLine v2 = new VerticalLine(sizeX - 1, 1, '|', sizeY - 2);
+
+            Point p = new Point(4, 5, '*');
+            Figure fSnake = new Snake(p, 5, Direct.right);
+            Snake snake = (Snake)fSnake;
+
+            List<Figure> fList = new List<Figure>() { v1, h1, v2, h2, fSnake };
+            foreach (Figure f in fList) f.Draw();
 
             FoodCreator foodCreator = new FoodCreator(sizeX, sizeY, '$');
             Point food = foodCreator.CreateFood();
@@ -34,13 +41,9 @@ namespace SnakeOOP
             Console.ReadLine();
         }
 
-        private static void SetBorder(int sizeX, int sizeY)
+        private static void Draw(Figure figur)
         {
-            HorizontalLine hLine = new HorizontalLine(0, 0, '+', sizeX);
-            VerticalLine vline = new VerticalLine(0, 0, '+', sizeY);
-
-            HorizontalLine hLine2 = new HorizontalLine(0, sizeY - 1, '+', sizeX);
-            VerticalLine vline2 = new VerticalLine(sizeX - 1, 0, '+', sizeY);
+            figur.Draw();
         }
     }
 }

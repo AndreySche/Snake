@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SnakeOOP
 {
@@ -11,8 +12,12 @@ namespace SnakeOOP
             {
                 list.Add(new Point(x + i, y, sym));
             }
-
-            Draw();
+        }
+        public override void Draw()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            base.Draw();
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
