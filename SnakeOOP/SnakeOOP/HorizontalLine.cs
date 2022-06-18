@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SnakeOOP
 {
+
     class HorizontalLine : Figure
     {
-        public HorizontalLine(int x, int y, char sym, int count)
+        public HorizontalLine(int xLeft, int xRight, int y, char sym)
         {
             list = new List<Point>();
-            for (int i = 0; i < count; i++)
+            for (int x = xLeft; x <= xRight; x++)
             {
-                list.Add(new Point(x + i, y, sym));
+                Point p = new Point(x, y, sym);
+                list.Add(p);
             }
-        }
-        public override void Draw()
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            base.Draw();
-            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

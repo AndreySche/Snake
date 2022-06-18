@@ -7,8 +7,8 @@ namespace SnakeOOP
 {
     class Snake : Figure
     {
-        private Direct _direction;
-        public Snake(Point tail, int length, Direct direction)
+        private Direction _direction;
+        public Snake(Point tail, int length, Direction direction)
         {
             _direction = direction;
             list = new List<Point>();
@@ -50,6 +50,16 @@ namespace SnakeOOP
             return false;
         }
 
+        internal bool IsHitTail()
+        {
+            var head = list.Last();
+            for (int i=0; i<list.Count - 2;i++)
+            {
+                if (head.IsHit(list[i])) return true;
+            }
+            return false;
+        }
+
         public Point GetNextPoint()
         {
             Point head = list.Last();
@@ -61,13 +71,13 @@ namespace SnakeOOP
         public void JoyStick(ConsoleKey key)
         {
             if (key == ConsoleKey.LeftArrow)
-                _direction = Direct.left;
+                _direction = Direction.LEFT;
             if (key == ConsoleKey.RightArrow)
-                _direction = Direct.right;
+                _direction = Direction.RIGHT;
             if (key == ConsoleKey.UpArrow)
-                _direction = Direct.up;
+                _direction = Direction.UP;
             if (key == ConsoleKey.DownArrow)
-                _direction = Direct.down;
+                _direction = Direction.DOWN;
         }
     }
 }

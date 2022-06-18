@@ -2,17 +2,16 @@
 
 namespace SnakeOOP
 {
-    class VerticalLine : Figure
-    {
-        public VerticalLine(int x, int y, char sym, int count)
-        {
-            list = new List<Point>();
-            for (int i = 0; i < count; i++)
-            {
-                list.Add(new Point(x, y + i, sym));
-            }
-
-            Draw();
-        }
-    }
+	class VerticalLine : Figure
+	{
+		public VerticalLine(int yUp, int yDown, int x, char sym)
+		{
+			list = new List<Point>();
+			for (int y = yUp; y <= yDown; y++)
+			{
+				Point p = new Point(x, y, sym);
+				list.Add(p);
+			}
+		}
+	}
 }
