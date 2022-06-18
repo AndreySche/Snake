@@ -35,10 +35,7 @@ namespace SnakeOOP
                 }
                 else Thread.Sleep(100);
                 snake.Move();
-
             }
-
-            Console.ReadLine();
         }
 
         private static void Draw(Figure figur)
