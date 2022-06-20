@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SnakeOOP
 {
-	enum Direction
-	{
-		LEFT,
-		RIGHT,
-		UP,
-		DOWN
-	}
+    public enum Direction
+    {
+        Left,
+        Right,
+        Up,
+        Down
+    }
 }

@@ -1,83 +1,65 @@
-﻿
-using System.Linq;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.Linq;
 
 namespace SnakeOOP
 {
     class Snake : Figure
     {
-        private Direction _direction;
-        public Snake(Point tail, int length, Direction direction)
+        private Point direction;
+        private Dictionary<ConsoleKey, Point> plusDirect;
+        private Point endPoint;
+
+        public Snake(ref Point endPoint, char sym, int count)
         {
-            _direction = direction;
-            list = new List<Point>();
-            for (int i = 0; i < length; i++)
+            this.endPoint = endPoint;
+            direction = DirectionInit();
+            pointList = new List<Point>();
+            for (int i = 0; i < count; i++)
             {
-                Point p = new Point(tail);
-                p.Move(i, direction);
-                list.Add(p);
+                pointList.Add(new Point(endPoint.X / 2 + i, endPoint.Y / 2, sym));
             }
-            Draw();
+        }
+
+        public void HandleKey(ConsoleKey key)
+        {
+            if (!plusDirect.ContainsKey(key)) return;
+            direction = plusDirect[key];
         }
 
         public void Move()
         {
-            if (Console.KeyAvailable)
-            {
-                ConsoleKeyInfo key = Console.ReadKey();
-                JoyStick(key.Key);
-            }
-
-            Point tail = list.First();
-            list.Remove(tail);
-            Point head = GetNextPoint();
-            list.Add(head);
-
+            Point tail = pointList.First();
+            pointList.Remove(tail);
             tail.Clear();
+
+            Point head = pointList.Last();
+            head += direction;
+            head = WallFerify(ref head);
+            pointList.Add(head);
+
             head.Draw();
         }
 
-        public bool Eat(Point food)
+        private Point WallFerify(ref Point head)
         {
-            Point head = GetNextPoint();
-            if (head.IsHit(food))
-            {
-                food.Sym = head.Sym;
-                list.Add(food);
-                return true;
-            }
-            return false;
+            if (head.X >= endPoint.X - 1) return new Point(1, head.Y, head.Sym);
+            if (head.X <= 1) return new Point(endPoint.X - 2, head.Y, head.Sym);
+            if (head.Y >= endPoint.Y) return new Point(head.X, 1, head.Sym);
+            if (head.Y <= 0) return new Point(head.X, endPoint.Y - 1, head.Sym);
+            return head;
         }
 
-        internal bool IsHitTail()
+        private Point DirectionInit()
         {
-            var head = list.Last();
-            for (int i=0; i<list.Count - 2;i++)
-            {
-                if (head.IsHit(list[i])) return true;
-            }
-            return false;
-        }
+            char head = '*';
+            plusDirect = new Dictionary<ConsoleKey, Point>();
+            plusDirect.Add(ConsoleKey.LeftArrow, new Point(-1, 0, head));
+            plusDirect.Add(ConsoleKey.RightArrow, new Point(1, 0, head));
+            plusDirect.Add(ConsoleKey.UpArrow, new Point(0, -1, head));
+            plusDirect.Add(ConsoleKey.DownArrow, new Point(0, 1, head));
 
-        public Point GetNextPoint()
-        {
-            Point head = list.Last();
-            Point nextPoint = new Point(head);
-            nextPoint.Move(1, _direction);
-            return nextPoint;
-        }
-
-        public void JoyStick(ConsoleKey key)
-        {
-            if (key == ConsoleKey.LeftArrow)
-                _direction = Direction.LEFT;
-            if (key == ConsoleKey.RightArrow)
-                _direction = Direction.RIGHT;
-            if (key == ConsoleKey.UpArrow)
-                _direction = Direction.UP;
-            if (key == ConsoleKey.DownArrow)
-                _direction = Direction.DOWN;
+            return plusDirect[ConsoleKey.RightArrow];
         }
     }
 }

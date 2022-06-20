@@ -6,33 +6,34 @@ namespace SnakeOOP
 {
     class Program
     {
+        static private List<Figure> list;
+
         static void Main(string[] args)
         {
-            Walls walls = new Walls(80, 30);
+            Point endPoint = new Point(80, 20, '+');
+            Walls walls = new Walls(endPoint);
+            Food food = new Food(endPoint);
+            Figure snake = new Snake(ref endPoint, '*', 5);
 
-            Point p = new Point(4, 5, '*');
-            Figure fSnake = new Snake(p, 5, Direction.RIGHT);
-            Snake snake = (Snake)fSnake;
-            fSnake.Draw();
+            list = walls.walls;
+            list.Add(snake);
 
-            FoodCreator foodCreator = new FoodCreator(80, 30, '$');
-            Point food = foodCreator.CreateFood();
-            food.Draw();
-
+            Draw();
             while (true)
             {
-                if(walls.IsHit(snake) || snake.IsHitTail())
+                if (Console.KeyAvailable)
                 {
-                    break;
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    (snake as Snake).HandleKey(key.Key);
                 }
-                else if (snake.Eat(food))
-                {
-                    food = foodCreator.CreateFood();
-                    food.Draw();
-                }
-                else Thread.Sleep(100);
-                snake.Move();
+                (snake as Snake).Move();
+                Thread.Sleep(100);
             }
+        }
+
+        static private void Draw()
+        {
+            foreach (Figure f in list) f.Draw();
         }
     }
 }

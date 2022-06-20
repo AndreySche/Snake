@@ -4,31 +4,23 @@ namespace SnakeOOP
 {
     class Figure
     {
-        protected List<Point> list;
+        public List<Point> pointList;
 
-        public virtual void Draw() // virtual -- чтобы можно было переопределить
-        {
-            foreach (Point p in list) p.Draw();
-        }
+        /// <summary>
+        /// Рисуем линии
+        /// </summary>
+        /// <param name="startPoint"></param>
+        /// <param name="count"></param>
+        /// <param name="sym"></param>
+        /// <param name="horizontal">вертикальная true|false</param>
+        public Figure() { }
 
-        internal bool IsHit(Figure figure)
+        public void Draw()
         {
-            foreach(Point p in list)
+            foreach (Point p in pointList)
             {
-                if (figure.IsHit(p)) return true;
+                p.Draw();
             }
-            return false;
         }
-
-        internal bool IsHit(Point point)
-        {
-            foreach (Point p in list)
-            {
-                if (point.IsHit(p)) return true;
-            }
-            return false;
-        }
-
-
     }
 }
